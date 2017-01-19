@@ -1,0 +1,86 @@
+<html>
+<head>
+<script>
+
+function MadLib(){
+
+
+var nm1 = document.Name1.elements[0].value;
+var n1 = document.Noun1.elements[0].value;
+var n2 = document.Noun2.elements[0].value;
+var n3 = document.Noun3.elements[0].value;
+var a1 = document.Adj1.elements[0].value;
+var c1 = document.Colour.elements[0].value;
+var h1 = document.Holiday.elements[0].value;
+var no1 = document.Number.elements[0].value;
+var t1 = document.Taste.elements[0].value;
+var pn1 = document.PlNoun1.elements[0].value;
+
+document.write("Dear "+nm1+",");
+document.write("<br>"+"<br>");
+document.write("Thanks for placing your wedding cake order with the "+c1+" "+n1+" Cake Company.  Unfortunately, the "+t1+"-flavored icing you requested is unavailable right now because "+a1+" "+pn1+" accidentally fell into our industrial mixer. We’re sorry for any inconvenience this caused.  Since you were ordering these for a party to celebrate "+h1+", we would like to offer you "+no1+" "+n2+"-shaped balloons at a significant discount.");
+document.write("<br>"+"<br>");
+document.write("Sincerely,");
+document.write("<br>");
+document.write("Alex \"The "+n3+"\" Spooner");
+}
+
+</script>
+</head>
+<body>
+
+<form name="Name1">
+Name
+<input type="text">
+</form>
+
+<form name="Noun1">
+Noun
+<input type="text">
+</form>
+
+<form name="Noun2">
+Noun
+<input type="text">
+</form>
+
+<form name="Noun3">
+Noun
+<input type="text">
+</form>
+
+<form name="Adj1">
+Adjective
+<input type="text">
+</form>
+
+<form name="Colour">
+Colour
+<input type="text">
+</form>
+
+<form name="Holiday">
+Holiday
+<input type="text">
+</form>
+
+<form name="Number">
+Number
+<input type="text">
+</form>
+
+<form name="Taste">
+Something you can taste
+<input type="text">
+</form>
+
+<form name="PlNoun1">
+Plural noun
+<input type="text">
+</form>
+
+<input type="button" value="Let's Mad Lib!" onClick="MadLib()">
+
+
+</body>
+</html>
