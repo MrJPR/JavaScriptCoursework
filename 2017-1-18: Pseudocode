@@ -1,118 +1,47 @@
+<!DOCTYPE html>
 <html>
 <head>
 
-<!--Pseudocode is an artificial and informal language that helps programmers develop algorithms.-->
-<!--Pseudocode is a "text-based" detail (algorithmic) design tool.-->
-
-<!--The rules of Pseudocode are reasonably straightforward. All statements showing "dependency" are to be indented.-->
-<!--These include while, do, for, if, switch. Examples below will illustrate this notion.-->
-
-<!--Assignment: Ask user to select between Door #1, Door #2, or Door #3-->
-
- Examples:
-
-1. If student's grade is greater than or equal to 60
-
-    Print "passed"
-
-else
-
-    Print "failed" 
-
-2. Set total to zero
-
-Set grade counter to one
-
-While grade counter is less than or equal to ten
-
-    Input the next grade
-
-    Add the grade into the total 
-
-Set the class average to the total divided by ten
-
-Print the class average.
-
-3.
-
-Initialize total to zero
-
-Initialize counter to zero
-
-Input the first grade
-
-while the user has not as yet entered the sentinel
-
-    add this grade into the running total 
-
-    add one to the grade counter 
-
-    input the next grade (possibly the sentinel)
-
-if the counter is not equal to zero
-
-    set the average to the total divided by the counter
-
-    print the average 
-
-else
-
-    print 'no grades were entered' 
-
-4.
-
-initialize passes to zero
-
-initialize failures to zero
-
-initialize student to one
-
-while student counter is less than or equal to ten
-
-    input the next exam result 
-
-    if the student passed
-
-        add one to passes 
-
-    else
-
-        add one to failures 
-
-add one to student counter
-
-print the number of passes
-
-print the number of failures
-
-if eight or more students passed
-
-    print "raise tuition"
+<!--Pseudocode
+1.User loads page
+2.User is asked to select a door
+3.User selects door from a dropdown
+4.User is given their prize-->
 
 </head>
-<script>
-
-var Door=getelementbyID("DNo")
-
-if (Door == 1){
-     document.write("You chose Door #1!");
-}
-     
-else if (Door == 2){
-     document.write("You chose Door #2!");
-}     
-     
-else{
-     document.write("You chose Door #3!:);
-}
-
-</script>
 <body>
 
+<p>To reveal your prize, pick a door, any door from the menu!</p>
 
 
+<select id="MyDoor" onchange="Door()">
+ <option value="Door 1">Door 1
+ <option value="Door 2">Door 2
+ <option value="Door 3">Door 3
+</select>
 
+<p id="answer"></p>
 
+<script>
+function Door() {
+ var x = document.getElementById("MyDoor").value;
+ 
+if (x == "Door 1"){
+ x += "x";
+ }
+
+else if(x == "Door 2"){
+ "y";
+ }
+
+else {
+x += "z";
+}
+
+ document.getElementById("answer").innerHTML = "You win ";
+}
+</script>
 
 </body>
+</html>
 </html>
