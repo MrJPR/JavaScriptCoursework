@@ -1,13 +1,13 @@
+<html>
+<head>
+
 <!--Pseudocode is an artificial and informal language that helps programmers develop algorithms.-->
 <!--Pseudocode is a "text-based" detail (algorithmic) design tool.-->
 
 <!--The rules of Pseudocode are reasonably straightforward. All statements showing "dependency" are to be indented.-->
 <!--These include while, do, for, if, switch. Examples below will illustrate this notion.-->
 
-<!--Door #1, Door #2, or Door #3-->
-
-
-
+<!--Assignment: Ask user to select between Door #1, Door #2, or Door #3-->
 
  Examples:
 
@@ -88,3 +88,20 @@ print the number of failures
 if eight or more students passed
 
     print "raise tuition"
+
+</head>
+<script>
+
+
+
+
+</script>
+<body>
+
+
+
+
+
+
+</body>
+</html>
