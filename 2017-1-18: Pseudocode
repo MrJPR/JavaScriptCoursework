@@ -92,8 +92,19 @@ if eight or more students passed
 </head>
 <script>
 
+var Door=getelementbyID("DNo")
 
-
+if (Door == 1){
+     document.write("You chose Door #1!");
+}
+     
+else if (Door == 2){
+     document.write("You chose Door #2!");
+}     
+     
+else{
+     document.write("You chose Door #3!:);
+}
 
 </script>
 <body>
