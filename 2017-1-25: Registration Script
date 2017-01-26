@@ -1,0 +1,75 @@
+<html>
+<head>
+
+<!--Instructions for assignment:
+Gather this user input:
+
+    Did you pass MATH&141?
+    Did you pass CSC110?
+    What was your decimal grade in CSC110?
+    Did you pass the equivalent of CSC110?
+    What was your decimal grade in the equivalent of CSC110?
+
+Prerequisite: MATH&141 and CSC110 or equivalent with a grade of 3.0 or better. 
+
+Your script needs to tell the user either a) "You can take CSC142 now." or 
+b) "You are lacking one or more prerequisites for CSC142."-->
+
+<script>
+
+function Enroll(){
+
+var MP = document.theForm.elements[0].value;
+var MS = document.theForm.elements[2].value;
+var CP = document.theForm.elements[3].value;
+var CS = document.theForm.elements[5].value;
+var AP = document.theForm.elements[6].value;
+var AS = document.theForm.elements[8].value;
+
+
+if (((MS >= 3) && (MP == "pass") && (CS >= 3) && (CP == "pass")) || ((MS >= 3) && (MP == "pass") && (AS >= 3) && (AP == "pass"))){
+alert("You can take CSC 142 now.");
+}
+else {
+alert("You are lacking one or more prerequisites for CSC142.");
+}
+}
+
+</script>
+</head>
+<body>
+
+
+<h3>Are you interested in taking CSC 142?  Please fill out the following form to find out if you are eligible!</h3>
+<h4>(Prerequisites: MATH 141 and CSC 110 or equivalent with a grade of 3.0 or better.)</h4>
+
+
+<form name="theForm">
+
+Did you pass Math 141?<br>
+<input type="radio" name="Mpass" value="pass"> Pass<br>
+<input type="radio" name="Mpass" value="fail"> Fail<br>
+What was your decimal grade in Math 141?
+<input type="text">
+<br><br>
+
+Did you pass CSC 110?<br>
+<input type="radio" name="Cpass" value="pass"> Pass<br>
+<input type="radio" name="Cpass" value="fail"> Fail<br>
+What was your decimal grade in CSC 110?
+<input type="text">
+<br><br>
+
+Did you pass the equivalent of CSC 110?<br>
+<input type="radio" name="Apass" value="pass"> Pass<br>
+<input type="radio" name="Apass" value="fail"> Fail<br>
+What was your decimal grade in that class?
+<input type="text">
+<br><br>
+
+<input type="button" value="Submit" onClick="Enroll()">
+<input type="reset">
+</form>
+
+</body>
+</html>
