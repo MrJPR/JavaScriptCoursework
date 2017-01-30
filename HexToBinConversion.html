@@ -1,0 +1,23 @@
+<html>
+<body>
+
+<h2>Hexadecimal to Binary Conversion</h2>
+
+<p id="demo"></p>
+
+<script>
+
+var text = "";
+var i;
+
+for (i = 0; i <= 15; i++) {
+	var n = i.toString(2);
+	n="0000".substr(n.length)+n;
+	text += "The binary equivalent of \"" + i.toString(16) + "\" is " + n + "<br>";
+}
+
+document.getElementById("demo").innerHTML = text;
+</script>
+
+</body>
+</html>
