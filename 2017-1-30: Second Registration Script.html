@@ -1,0 +1,250 @@
+<html>
+<head>
+
+<!--Instructions for assignment:
+For purposes of this assignment, it will be enough if your checker 
+supports courses from NSC. Checking for transfer credits from Central 
+or South is not required. All, you checker only needs to focus on 
+specific programming and IT course requirements. For other requirements 
+(English, math, general education, other), your checker can just ask 
+one blanket question: "Have you completed all other required courses?" 
+Your checker should give helpful feedback to students about which 
+requirements they have already satisfied and which courses they still 
+need to take. Turn in this script as a single file called Checker.html
+
+Prerequisites:
+	IT Courses (10 credits):
+	IT 102
+	IT 115
+	IT 162
+	CSC 110
+	CSC 142
+	
+	Database Development (5 credits):
+	IT 125
+	
+	Web Development (5 credits):
+	IT 111
+	
+	General Education (10 credits):
+	Math and English Comp-->
+
+<script>
+function Enroll(){
+
+//Form Variables
+var I1 = document.getElementById("I1");
+var I2 = document.getElementById("I2");
+var I3 = document.getElementById("I3");
+var I4 = document.getElementById("I4");
+var I5 = document.getElementById("I5");
+var C1 = document.getElementById("C1");
+var C2 = document.getElementById("C2");
+var G1 = document.getElementById("G1");
+
+//All true
+if ((
+((I1.checked == true)&&(I2.checked == true))||
+((I1.checked == true)&&(I3.checked == true))||
+((I1.checked == true)&&(C1.checked == true))||
+((I1.checked == true)&&(C2.checked == true))||
+((I2.checked == true)&&(I3.checked == true))||
+((I2.checked == true)&&(C1.checked == true))||
+((I2.checked == true)&&(C2.checked == true))||
+((I3.checked == true)&&(C1.checked == true))||
+((I3.checked == true)&&(C2.checked == true))||
+((C1.checked == true)&&(C2.checked == true))
+)&&(
+(I4.checked == true)
+)&&(
+(I5.checked == true)
+)&& (
+(G1.checked == true)
+)){
+
+alert("Congratulations, you have completed the correct prerequisites to apply to the BAS in Application Development program at North Seattle College.");
+}
+
+//IT & DB Deficit
+//else if (((
+//((I1.checked == true)&&(I2.checked == true))||
+//((I1.checked == true)&&(I3.checked == true))||
+//((I1.checked == true)&&(C1.checked == true))||
+//((I1.checked == true)&&(C2.checked == true))||
+//((I2.checked == true)&&(I3.checked == true))||
+//((I2.checked == true)&&(C1.checked == true))||
+//((I2.checked == true)&&(C2.checked == true))||
+//((I3.checked == true)&&(C1.checked == true))||
+//((I3.checked == true)&&(C2.checked == true))||
+//((C1.checked == true)&&(C2.checked == true))
+//)||(I4.checked == true))!=true) {
+//        alert("You are lacking one of the IT prerequisites as well as the Database Development prerequisite required for this program.");
+//    }
+
+//IT & WD Deficit
+//else if (((
+//((I1.checked == true)&&(I2.checked == true))||
+//((I1.checked == true)&&(I3.checked == true))||
+//((I1.checked == true)&&(C1.checked == true))||
+//((I1.checked == true)&&(C2.checked == true))||
+//((I2.checked == true)&&(I3.checked == true))||
+//((I2.checked == true)&&(C1.checked == true))||
+//((I2.checked == true)&&(C2.checked == true))||
+//((I3.checked == true)&&(C1.checked == true))||
+//((I3.checked == true)&&(C2.checked == true))||
+//((C1.checked == true)&&(C2.checked == true))
+//)||(I5.checked == true))!=true) {
+//        alert("You are lacking one of the IT prerequisites as well as the Web Development prerequisite required for this program.");
+//    }
+    
+//IT & GE Deficit
+//else if (((
+//((I1.checked == true)&&(I2.checked == true))||
+//((I1.checked == true)&&(I3.checked == true))||
+//((I1.checked == true)&&(C1.checked == true))||
+//((I1.checked == true)&&(C2.checked == true))||
+//((I2.checked == true)&&(I3.checked == true))||
+//((I2.checked == true)&&(C1.checked == true))||
+//((I2.checked == true)&&(C2.checked == true))||
+//((I3.checked == true)&&(C1.checked == true))||
+//((I3.checked == true)&&(C2.checked == true))||
+//((C1.checked == true)&&(C2.checked == true))
+//)||(G1.checked == true))!=true) {
+//        alert("You are lacking one of the IT prerequisites as well as one of the General Education prerequisites required for this program.");
+//	}
+    
+//DB & WD Deficit
+//else if (((I4.checked == true)&&(I5.checked == true))!=true) {
+//      alert("You are lacking the Database Development prerequisite as well as the Web Development prerequisite required for this program.");
+//    }
+    
+//DB & GE Deficit
+//else if (((I4.checked == true)&&(G1.checked == true))!=true) {
+//      alert("You are lacking the Database Development prerequisite as well as one of the General Education prerequisites required for this program.");
+//    }
+    
+//WD & GE Deficit
+//else if (((I5.checked == true)&&(G1.checked == true))!=true) {
+//      alert("You are lacking the Web Development prerequisite as well as one of the General Education prerequisites required for this program.");
+//    }
+
+//All deficits (i.e. 3 or 4 missing courses)    
+else if(!(
+((I1.checked == true)&&(I2.checked == true))||
+((I1.checked == true)&&(I3.checked == true))||
+((I1.checked == true)&&(C1.checked == true))||
+((I1.checked == true)&&(C2.checked == true))||
+((I2.checked == true)&&(I3.checked == true))||
+((I2.checked == true)&&(C1.checked == true))||
+((I2.checked == true)&&(C2.checked == true))||
+((I3.checked == true)&&(C1.checked == true))||
+((I3.checked == true)&&(C2.checked == true))||
+((C1.checked == true)&&(C2.checked == true))
+)&&!(
+(I4.checked == true)
+)&&!(
+(I5.checked == true)
+)&&!(
+(G1.checked == true)
+)){
+
+alert("You have not completed any prerequisites for this program.");
+}
+
+//IT Deficit
+else if ((
+((I1.checked == true)&&(I2.checked == true))||
+((I1.checked == true)&&(I3.checked == true))||
+((I1.checked == true)&&(C1.checked == true))||
+((I1.checked == true)&&(C2.checked == true))||
+((I2.checked == true)&&(I3.checked == true))||
+((I2.checked == true)&&(C1.checked == true))||
+((I2.checked == true)&&(C2.checked == true))||
+((I3.checked == true)&&(C1.checked == true))||
+((I3.checked == true)&&(C2.checked == true))||
+((C1.checked == true)&&(C2.checked == true)))!=true)
+{
+      alert("You are lacking one of the IT prerequisites required for this program.");
+	}
+    
+//DB Deficit
+else if ((I4.checked == true)!=true) {
+      alert("You are lacking the Database Development prerequisite required for this program.");
+    }
+
+//WD Deficit
+else if ((I5.checked == true)!=true) {
+        alert("You are lacking the Web Development prerequisite required for this program.");
+    }
+
+//GE Deficit
+else if ((G1.checked == true)!=true) {
+        alert("You are lacking one of the General Education prerequisites required for this program.");
+    }
+
+  
+}
+</script>
+</head>
+<body>
+
+
+<h2>Are you interested in applying for the BAS in Application Development program at North Seattle College? <br> 
+Please fill out the following form to find out if you are eligible!</h2>
+
+
+<form name="theForm">
+<h4>IT Prerequisites</h4>
+
+Have you completed IT 102?<br>
+<input type="radio" name="I1" id="I1" value="true"> Yes<br>
+<input type="radio" name="I1" id="I1" value="false"> No<br>
+<br>
+
+Have you completed IT 115?<br>
+<input type="radio" name="I2" id="I2" value="true"> Yes<br>
+<input type="radio" name="I2" id="I2" value="false"> No<br>
+<br>
+
+Have you completed IT 162?<br>
+<input type="radio" name="I3" id="I3" value="true"> Yes<br>
+<input type="radio" name="I3" id="I3" value="false"> No<br>
+<br>
+
+Have you completed CSC 110?<br>
+<input type="radio" name="C1" id="C1" value="true"> Yes<br>
+<input type="radio" name="C1" id="C1" value="false"> No<br>
+<br>
+
+Have you completed CSC 142?<br>
+<input type="radio" name="C2" id="C2" value="true"> Yes<br>
+<input type="radio" name="C2" id="C2" value="false"> No<br>
+<br><br>
+
+<h4>Database Development Prerequisites</h4>
+
+Have you completed IT 125?<br>
+<input type="radio" name="I4" id="I4" value="true"> Yes<br>
+<input type="radio" name="I4" id="I4" value="false"> No<br>
+<br><br>
+
+<h4>Web Development Prerequisites</h4>
+
+Have you completed IT 111?<br>
+<input type="radio" name="I5" id="I5" value="true"> Yes<br>
+<input type="radio" name="I5" id="I5" value="false"> No<br>
+<br><br>
+
+<h4>General Education Prerequisites</h4>
+
+Have you completed the Math and English general education requirements?<br>
+<input type="radio" name="G1" id="G1" value="true"> Yes<br>
+<input type="radio" name="G1" id="G1" value="false"> No<br>
+<br><br>
+
+<input type="button" value="Submit" onClick="Enroll()">
+<input type="reset">
+</form>
+
+</body>
+</html>
