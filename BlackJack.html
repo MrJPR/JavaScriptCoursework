@@ -1,0 +1,78 @@
+<html>
+<body>
+
+<h1>Blackjack</h1>
+
+<script>
+//initialize all variables
+var card = 0;
+var total = 0;
+var hitMe = true;
+var dealer = 0;
+
+//Dealer starts with two cards
+dealer = Math.ceil(11*Math.random()) + Math.ceil(11*Math.random());
+
+//Game
+while ((hitMe == true)&&(dealer <= 21)&&(total <= 21)){
+hitMe = prompt("Current total: " + total + " Take a card?", "Y");
+if (hitMe == "Y"){hitMe = true;}
+else {hitMe = false}
+if(hitMe){
+card = Math.ceil(11*Math.random());
+total += card;
+}
+
+//Dealer takes 1 more card if under 16
+if (dealer < 16){
+	dealer += Math.ceil(11*Math.random()); 
+}
+
+//Someone got blackjack
+if ((dealer == 21)||(total == 21)){
+break;
+
+}
+}
+
+//Dealer takes 1 more card if under 16 and player didn't hit
+if (dealer < 16){
+	dealer += Math.ceil(11*Math.random()); 
+}
+
+///////////
+//Results//
+///////////
+
+//House blackjack
+if (dealer == 21){
+alert("Dealer got 21! Dealer wins!");
+}
+
+//Player blackjack
+else if ((total == 21) && (dealer != 21)){
+alert("You got 21! Dealer got " + dealer + ". You win!");
+}
+
+//House wins
+else if (dealer <= 20){
+alert("Your hand is worth " + total + ".  Dealer got " + dealer + ".\n\n Dealer wins!\n Surprise, surprise.");
+}
+
+//Player wins
+else if (total <= 20){
+alert("Your hand is worth " + total + ". Dealer got " + dealer + ".\n\n You win!");
+}
+
+//Nobody wins
+else{
+alert("Your hand is worth " + total + ". Dealer got " + dealer + ".\n\n Double bust!");
+}
+
+document.write("You got " + total + ".");
+document.write("Dealer got " + dealer + ".");
+
+</script>
+
+</body>
+</html>
