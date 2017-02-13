@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h3>
+Is a random number through 1000 prime?  Let's find out!
+</h3>
+
+<script>
+
+function RunIt()
+{
+var i = (Math.ceil(Math.random()*1000));
+
+document.write("Your random number is " + i + ".<br>");
+
+if (i%2==0)
+{document.write(i + " is divisible by 2.<br>");}
+else if (i%3==0)
+{document.write(i + " is divisible by 3.<br>");}
+else if (i%5==0)
+{document.write(i + " is divisible by 5.<br>");}
+else if (i%7==0)
+{document.write(i + " is divisible by 7.<br>");}
+else if (i%11==0)
+{document.write(i + " is divisible by 11.<br>");}
+else if (i%13==0)
+{document.write(i + " is divisible by 13.<br>");}
+else if (i%17==0)
+{document.write(i + " is divisible by 17.<br>");}
+else if (i%19==0)
+{document.write(i + " is divisible by 19.<br>");}
+else if (i%23==0)
+{document.write(i + " is divisible by 23.<br>");}
+else if (i%27==0)
+{document.write(i + " is divisible by 27.<br>");}
+else if (i%31==0)
+{document.write(i + " is divisible by 31.<br>");}
+else
+{document.write(i + " is a prime number.")}
+}
+
+</script>
+
+<input type="button" value="Create a new random number!" onClick="RunIt()">
+
+</body>
+</html> 
