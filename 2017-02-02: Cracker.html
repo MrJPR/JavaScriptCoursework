@@ -1,53 +1,43 @@
+<!DOCTYPE html>
 <html>
 <body>
 
-<h1>JavaScript Cracker</h1>
-
-
-
 <script>
-var Count = 0;
-var l = "";
 
-//Individual letters
-var Alpha = "abcdefghijklmnopqrstuvwxyz"
-var Chars = Alpha.split("");
+var Pass = prompt("Enter in a three-character password!","");
+var P1 = Pass.charAt(0)
+var P2 = Pass.charAt(1)
+var P3 = Pass.charAt(2)
 
-//User input
-var Pass1 = prompt ("Please enter a random, lower-case character:","");
-//var Pass2 = prompt ("Please enter another random, lower-case character:","");
-//var Pass3 = prompt ("Please enter a final random, lower-case character:","");
-
-//Program output
-document.write("You entered "+Pass1+Pass2+Pass3)
-
-//Program
-for ( var i = 0; i < 26; i++) {
-	if (i = Pass1){alert(i)};
-	else {i++}
+var G1 = 97
+var G2 = 97
+var G3 = 97
 
 
-//    		for (second = 0; second < 2; second++) {
-//			for (first = 0; first < 2; first++) {
-//    				document.write("Binary - " + fourth + " " + third  + " " + second  + " " + first + " " + "    " +"<br>");
+while (G1 != P1){
+	G1++
+    
 
-}
-}
-}
+
+//for (; G1 != P1; G1++)
+
+var name = "Nobody";
+for (i = 0; i< 6; i++)
+{document.write("<br>" + name.charAt(i) + ": " + name.charCodeAt(i));}
+
+//Turns ASCII to string
+//for (i=97; i<122; i++)
+//{document.write(String.fromCharCode(i) + ": " + i + "<br>");}
+
+//Gets Char from code
+//for (i = 0; i< 3; i++)
+//{document.write("<br>" + Pass.charAt(i) + ": " + Pass.charCodeAt(i));}
+
+document.write(P1);
+document.write(P2);
+document.write(P3);
+
 </script>
 
 </body>
-</html>
-
-
-
-
-
-function iterateAlphabet()
-	{
-	   var str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	   for(var i=0; i<str.length; i++)
-	   {
-	      var nextChar = str.charAt(i);
-	      alert(nextChar)
-	   }
+</html> 
