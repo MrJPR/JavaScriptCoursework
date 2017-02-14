@@ -1,43 +1,77 @@
-<!DOCTYPE html>
 <html>
+<head>
+<!--
+IT 102 - Midterm Assignment #2
+Password Cracker
+John Paul Roberts
+13 Feb 2017
+
+Instructions:
+1.User enters a three character password into a prompt box
+2.User is shown what they entered
+3.User is shown what their password is in ASCII
+4.User is shown the password that the script produces
+5.User is shown how many cycles it took the script to guess their password
+-->
+
+</head>
+
 <body>
+<h2>Let's crack that password!</h2>
 
+You entered:
+<h3 id="UPass"></h3>
+
+The ASCII codes for your password are:
+<p id="ASCII"></p>
+
+The password that the script came up with is:
+<p id="SPass"></p>
+
+It took the script this many cycles to figure out your password:
+<p id="cycles"></p>
+
+<a href="javascript:location.reload(true)">Click to try another password!</a>
 <script>
+//User input
+var Pass = prompt("Enter in a complex three-character password.","D~*");
 
-var Pass = prompt("Enter in a three-character password!","");
-var P1 = Pass.charAt(0)
-var P2 = Pass.charAt(1)
-var P3 = Pass.charAt(2)
+//Individual password characters
+var C1 = Pass.charCodeAt(0);
+var C2 = Pass.charCodeAt(1);
+var C3 = Pass.charCodeAt(2);
 
-var G1 = 97
-var G2 = 97
-var G3 = 97
+//Open ASCII variables
+var T1 = "";
+var T2 = "";
+var T3 = "";
 
+//Cycles until ASCII value of C1 is the same
+for (i=0; i<=C1; i++){
+	if (i == C1) { break;}
+	T1 = i + 1;}
 
-while (G1 != P1){
-	G1++
-    
+//Cycles until ASCII value of C2 is the same
+for (j=0; j<=C2; j++){
+	if (j == C2) { break;}
+	T2 = j + 1;}
 
+//Cycles until ASCII value of C3 is the same
+for (k=0; k<=C3; k++){
+	if (k == C3) { break;}
+	T3 = k + 1;}
 
-//for (; G1 != P1; G1++)
+//Password characters from the FOR loops
+var P1 = String.fromCharCode(T1);
+var P2 = String.fromCharCode(T2);
+var P3 = String.fromCharCode(T3);
 
-var name = "Nobody";
-for (i = 0; i< 6; i++)
-{document.write("<br>" + name.charAt(i) + ": " + name.charCodeAt(i));}
-
-//Turns ASCII to string
-//for (i=97; i<122; i++)
-//{document.write(String.fromCharCode(i) + ": " + i + "<br>");}
-
-//Gets Char from code
-//for (i = 0; i< 3; i++)
-//{document.write("<br>" + Pass.charAt(i) + ": " + Pass.charCodeAt(i));}
-
-document.write(P1);
-document.write(P2);
-document.write(P3);
+//Java -> HTML
+document.getElementById("UPass").innerHTML = Pass;
+document.getElementById("ASCII").innerHTML = T1 + "<br>" + T2 + "<br>" + T3;
+document.getElementById("SPass").innerHTML = P1 + " " + P2 + " " + P3;
+document.getElementById("cycles").innerHTML = i + j + k;
 
 </script>
-
 </body>
 </html> 
