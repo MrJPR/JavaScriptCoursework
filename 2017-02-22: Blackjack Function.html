@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function BlackJack(){
+//Variables
+var card = 0;
+var total = 0;
+var hitMe = true;
+var dealer = 0;
+
+//Player draws
+while ((hitMe == true)&&(total <= 21))
+{
+hitMe = prompt("Current total: " + total + " Take a card?", "Y");
+if (hitMe == "Y"){hitMe = true;}
+else {hitMe = false}
+if(hitMe){
+card = Math.ceil(11*Math.random());
+total += card;
+}}
+
+//Dealer draws
+dealer = Math.ceil(11*Math.random()) + Math.ceil(11*Math.random()); //dealer always takes 2 cards
+alert("Your hand is worth " + total + ". Dealer got " + dealer + ".");
+}
+</script>
+</head>
+<body>
+<h1>Typical Day at the Office:</h1>
+
+Work <br>
+Work <br>
+Work <br>
+Work <br>
+Work <br>
+Work <br>
+Work <br>
+Work <br>
+Work <br>
+Work <br>
+Work <br>
+Work <br>
+Work <br>
+... <br>
+... <br>
+... <br>
+<button onclick="BlackJack()">I'd rather be playing Blackjack</button> 
+</body>
+</html>
