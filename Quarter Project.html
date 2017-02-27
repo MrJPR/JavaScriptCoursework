@@ -41,12 +41,11 @@ var sum = first / second;
 document.getElementById("answer").innerHTML = sum;
 }
 
-//IBUs
-function IBU(){
-var first = Number(document.theForm.elements[0].value);
-var second = Number(document.theForm.elements[1].value);
-var sum = Math.sqrt(first);
-document.getElementById("answer").innerHTML = sum;
+//Specific Gravity to Plato Converter
+function SpecToPlato(){
+var first = Number(document.theForm.elements[2].value);
+var SGtoPlato = Math.max((135.997 * Math.pow(first, 3)) - (630.272 * Math.pow(first, 2)) + (1111.14 * first) - 616.868).toFixed(1);
+document.getElementById("answer").innerHTML = "An original gravity of <b>" + Math.max(first).toFixed(3) + "</b> is equivalent to <b>"+  SGtoPlato + "°P</b>";
 }
 
 //Working
@@ -73,15 +72,15 @@ document.getElementById("answer").innerHTML = "The ABV of your beer is <b>"+  AB
 <!--Fillable Entries-->
 <input type="text" >Original Gravity (OG)<br>
 <input type="text" >Final Gravity (FG)<br>
-<input type="text" ><br>
+<input type="text" >Specific Gravity (SG)<br>
 <select name="cars">
   <option value="Dry">Dry Yeast</option>
   <option value="LiquidPack">Liquid Yeast (0.0mL)</option>
   <option value="LiquidVial">Liquid Yeast (0.0mL)</option>
   <option value="Slurry">Slurry</option>
 </select>Yeast Type<br>
-<input type="text" >Wort Gravity (WG)<br>
 <input type="text" >Yeast Attenuation<br>
+<input type="text" >Wort Gravity (WG)<br>
 <input type="text" >Batch Size<br>
 
 <!--Function Buttons-->
@@ -89,7 +88,7 @@ document.getElementById("answer").innerHTML = "The ABV of your beer is <b>"+  AB
 <input type="button" value="Expected FG" onClick="ExpectedFG()">
 <input type="button" value="Apparent Attenuation" onClick="ApparentAttenuation()">
 <input type="button" value="Pitch Rate" onClick="PitchRate()">
-<input type="button" value="IBUs" onClick="IBU()">
+<input type="button" value="SG to Plato" onClick="SpecToPlato()">
 <input type="button" value="ABV" onClick="ABV()"><br>
 
 <!--Results-->
@@ -148,9 +147,9 @@ th, td {
     <td>Gives the estimated amount of yeast to pitch based on the OG and batch size</td>
   </tr>
   <tr>
-    <td>IBUs</td>
-    <td>WG, Hop Charge</td>
-    <td>Gives the estimated IBUs based on the the hop charge and wort gravity</td>
+    <td>SG to Plato</td>
+    <td>SG</td>
+    <td>Gives the equivalent degrees Plato (°P) based on specific gravity</td>
   </tr>
 </table> 
 
