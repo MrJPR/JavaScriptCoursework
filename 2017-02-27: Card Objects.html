@@ -1,0 +1,58 @@
+<html>
+
+<!--
+27 Feb Script of the Day
+John Roberts
+
+SotD Requirements:
+Properties
+    Suit		(Heart, Spade, Club, Diamond)
+    Rank		(Jack, Queen, King, Ace)
+    isVisible	(true, false)
+
+Methods
+    show()		()
+    hide()		()
+-->
+
+<body>
+<script>
+//Card prototype
+function Card(suit, rank, isVisible) {
+ 
+ //Properties
+ this.suit = suit;
+ this.rank = rank;
+ this.isVisible = false
+ 
+ //Methods
+ this.show = function show() 
+ {this.isVisible = true;}
+ this.hide = function hide() 
+ {this.isVisible = false;}
+
+}
+
+//Card1//
+var card1 = new Card();
+
+//Test Code #1
+alert("Empty Card 1 Suit: " + card1.suit + "\nEmpty Card 1 Rank: " + card1.rank);
+
+card1.suit = "Spade";
+card1.rank = "Jack";
+card1.show();
+
+//Test Code #2
+alert ("Suit 1: " + card1.suit + "\nRank 1: " + card1.rank);
+
+//Card2//
+var card2 = new Card("Diamond", 10);
+
+//Test Code #3
+alert ("Suit 2: " + card2.suit + "\nRank 2: " + card2.rank);
+alert ("Visibility 1: " + card1.isVisible + "\nVisibility 2: " + card2.isVisible);
+</script>
+
+</body>
+</html>
