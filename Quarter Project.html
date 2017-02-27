@@ -44,8 +44,18 @@ document.getElementById("answer").innerHTML = sum;
 //IBUs
 function IBU(){
 var first = Number(document.theForm.elements[0].value);
+var second = Number(document.theForm.elements[1].value);
 var sum = Math.sqrt(first);
 document.getElementById("answer").innerHTML = sum;
+}
+
+//Working
+//ABV
+function ABV(){
+var first = Number(document.theForm.elements[0].value);
+var second = Number(document.theForm.elements[1].value);
+var ABV = 131.25 * (first - second);
+document.getElementById("answer").innerHTML = "The ABV of your beer is <b>"+  ABV + "%</b>";
 }
 
 </script>
@@ -78,13 +88,13 @@ document.getElementById("answer").innerHTML = sum;
 <input type="button" value="Calories" onClick="Calories()">
 <input type="button" value="Expected FG" onClick="ExpectedFG()">
 <input type="button" value="Apparent Attenuation" onClick="ApparentAttenuation()">
-<input type="button" value="%" onClick="getQuotient()">
-<input type="button" value="²√" onClick="getSqrt()">
-<input type="button" value="x²" onClick="getSqr()"><br>
+<input type="button" value="Pitch Rate" onClick="PitchRate()">
+<input type="button" value="IBUs" onClick="IBU()">
+<input type="button" value="ABV" onClick="ABV()"><br>
 
 <!--Results-->
 <h3>Results:</h3>
-<p id = "answer" ></p>
+<p id = "answer" >---</p>
 <br>
 <input type="Reset">
 <br>
