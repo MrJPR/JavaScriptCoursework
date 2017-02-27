@@ -20,16 +20,17 @@ document.getElementById("answer").innerHTML = sum;
 function ExpectedFG(){
 var first = Number(document.theForm.elements[0].value);
 var second = Number(document.theForm.elements[1].value);
-var sum = first - second;
-document.getElementById("answer").innerHTML = sum;
+var ExpFG = first / second;
+document.getElementById("answer").innerHTML = ExpFG;
 }
 
+//Working!
 //Apparent Attenuation
-function Attenuation(){
+function ApparentAttenuation(){
 var first = Number(document.theForm.elements[0].value);
 var second = Number(document.theForm.elements[1].value);
-var sum = first * second;
-document.getElementById("answer").innerHTML = sum;
+var AppAtt = 100*((first - second)/(first - 1));
+document.getElementById("answer").innerHTML = "The apparent attenuation of your yeast was <b>"+  AppAtt + "%</b>";
 }
 
 //Yeast Pitch Rate
@@ -74,17 +75,20 @@ document.getElementById("answer").innerHTML = sum;
 <input type="text" >Batch Size<br>
 
 <!--Function Buttons-->
-<input type="button" value="+" onClick="getSum()">
-<input type="button" value="-" onClick="getDifference()">
-<input type="button" value="x" onClick="getProduct()">
+<input type="button" value="Calories" onClick="Calories()">
+<input type="button" value="Expected FG" onClick="ExpectedFG()">
+<input type="button" value="Apparent Attenuation" onClick="ApparentAttenuation()">
 <input type="button" value="%" onClick="getQuotient()">
 <input type="button" value="²√" onClick="getSqrt()">
 <input type="button" value="x²" onClick="getSqr()"><br>
 
 <!--Results-->
+<h3>Results:</h3>
 <p id = "answer" ></p>
+<br>
 <input type="Reset">
-
+<br>
+<br>
 
 <!--Instructions-->
 <p id = "Explanatory Paragraph" >
