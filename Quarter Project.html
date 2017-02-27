@@ -26,7 +26,7 @@ var sum = first * second;
 document.getElementById("answer").innerHTML = sum;
 }
 
-//IBUs
+//Yeast Pitch Rate
 function getQuotient(){
 var first = Number(document.theForm.elements[0].value);
 var second = Number(document.theForm.elements[1].value);
@@ -34,25 +34,34 @@ var sum = first / second;
 document.getElementById("answer").innerHTML = sum;
 }
 
-//Yeast Pitch Rate
+//IBUs
 function getSqrt(){
 var first = Number(document.theForm.elements[0].value);
 var sum = Math.sqrt(first);
 document.getElementById("answer").innerHTML = sum;
 }
 
-function getSqr(){
-var first = Number(document.theForm.elements[0].value);
-var sum = first * first;
-document.getElementById("answer").innerHTML = sum;
-}
 </script>
+
+
 </head>
 <body>
+<h2>John's Brewing Calculator</h2>
+
 <form name="theForm">
 <p>Please fill out the appropriate fields and then click your desired function.<br><p>
 <input type="text" >Original Gravity (OG)<br>
 <input type="text" >Final Gravity (FG)<br>
+<input type="text" ><br>
+<select name="cars">
+  <option value="Dry">Dry Yeast</option>
+  <option value="LiquidPack">Liquid Yeast (0.0mL)</option>
+  <option value="LiquidVial">Liquid Yeast (0.0mL)</option>
+  <option value="Slurry">Slurry</option>
+</select>Yeast Type<br>
+<input type="text" >Wort Gravity (WG)<br>
+<input type="text" >Yeast Attenuation<br>
+<input type="text" >Batch Size<br>
 <input type="button" value="+" onClick="getSum()">
 <input type="button" value="-" onClick="getDifference()">
 <input type="button" value="x" onClick="getProduct()">
@@ -69,6 +78,7 @@ Not all functions require the same input.  For example, estimating the final gra
 <br><br>
 The following table lists the required fields for each function:
 <br><br>
+
 <style>
 table, th, td {
     border: 1px solid black;
@@ -110,7 +120,7 @@ th, td {
     <td>Gives the estimated IBUs based on the the hop charge and wort gravity</td>
   </tr>
 </table> 
-</p>
+
 
 </form>
 </body>
