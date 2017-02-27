@@ -1,9 +1,15 @@
 <html>
 <head>
 <title>Brewing Calculator</title>
+
+<!--JavaScript-->
 <script>
+////////////////////////
+//Calculator Functions//
+////////////////////////
+
 //Calories
-function getSum(){
+function Calories(){
 var first = Number(document.theForm.elements[0].value);
 var second = Number(document.theForm.elements[1].value);
 var sum = first + second;
@@ -11,7 +17,7 @@ document.getElementById("answer").innerHTML = sum;
 }
 
 //Expected FG
-function getDifference(){
+function ExpectedFG(){
 var first = Number(document.theForm.elements[0].value);
 var second = Number(document.theForm.elements[1].value);
 var sum = first - second;
@@ -19,7 +25,7 @@ document.getElementById("answer").innerHTML = sum;
 }
 
 //Apparent Attenuation
-function getProduct(){
+function Attenuation(){
 var first = Number(document.theForm.elements[0].value);
 var second = Number(document.theForm.elements[1].value);
 var sum = first * second;
@@ -27,7 +33,7 @@ document.getElementById("answer").innerHTML = sum;
 }
 
 //Yeast Pitch Rate
-function getQuotient(){
+function PitchRate(){
 var first = Number(document.theForm.elements[0].value);
 var second = Number(document.theForm.elements[1].value);
 var sum = first / second;
@@ -35,21 +41,25 @@ document.getElementById("answer").innerHTML = sum;
 }
 
 //IBUs
-function getSqrt(){
+function IBU(){
 var first = Number(document.theForm.elements[0].value);
 var sum = Math.sqrt(first);
 document.getElementById("answer").innerHTML = sum;
 }
 
 </script>
-
-
 </head>
+
+
+<!--HTML-->
 <body>
 <h2>John's Brewing Calculator</h2>
 
+<!--Calculator Form-->
 <form name="theForm">
 <p>Please fill out the appropriate fields and then click your desired function.<br><p>
+
+<!--Fillable Entries-->
 <input type="text" >Original Gravity (OG)<br>
 <input type="text" >Final Gravity (FG)<br>
 <input type="text" ><br>
@@ -62,15 +72,21 @@ document.getElementById("answer").innerHTML = sum;
 <input type="text" >Wort Gravity (WG)<br>
 <input type="text" >Yeast Attenuation<br>
 <input type="text" >Batch Size<br>
+
+<!--Function Buttons-->
 <input type="button" value="+" onClick="getSum()">
 <input type="button" value="-" onClick="getDifference()">
 <input type="button" value="x" onClick="getProduct()">
 <input type="button" value="%" onClick="getQuotient()">
 <input type="button" value="²√" onClick="getSqrt()">
 <input type="button" value="x²" onClick="getSqr()"><br>
+
+<!--Results-->
 <p id = "answer" ></p>
 <input type="Reset">
 
+
+<!--Instructions-->
 <p id = "Explanatory Paragraph" >
 <h3> Explanatory Notes </h3>
 
@@ -79,6 +95,7 @@ Not all functions require the same input.  For example, estimating the final gra
 The following table lists the required fields for each function:
 <br><br>
 
+<!--Table Style-->
 <style>
 table, th, td {
     border: 1px solid black;
@@ -88,6 +105,8 @@ th, td {
     padding: 5px;
 }
 </style>
+
+<!--Table Content-->
 <table style="width:100%">
   <tr>
     <th>Function</th>
