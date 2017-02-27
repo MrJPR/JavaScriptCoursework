@@ -1,0 +1,117 @@
+<html>
+<head>
+<title>Brewing Calculator</title>
+<script>
+//Calories
+function getSum(){
+var first = Number(document.theForm.elements[0].value);
+var second = Number(document.theForm.elements[1].value);
+var sum = first + second;
+document.getElementById("answer").innerHTML = sum;
+}
+
+//Expected FG
+function getDifference(){
+var first = Number(document.theForm.elements[0].value);
+var second = Number(document.theForm.elements[1].value);
+var sum = first - second;
+document.getElementById("answer").innerHTML = sum;
+}
+
+//Apparent Attenuation
+function getProduct(){
+var first = Number(document.theForm.elements[0].value);
+var second = Number(document.theForm.elements[1].value);
+var sum = first * second;
+document.getElementById("answer").innerHTML = sum;
+}
+
+//IBUs
+function getQuotient(){
+var first = Number(document.theForm.elements[0].value);
+var second = Number(document.theForm.elements[1].value);
+var sum = first / second;
+document.getElementById("answer").innerHTML = sum;
+}
+
+//Yeast Pitch Rate
+function getSqrt(){
+var first = Number(document.theForm.elements[0].value);
+var sum = Math.sqrt(first);
+document.getElementById("answer").innerHTML = sum;
+}
+
+function getSqr(){
+var first = Number(document.theForm.elements[0].value);
+var sum = first * first;
+document.getElementById("answer").innerHTML = sum;
+}
+</script>
+</head>
+<body>
+<form name="theForm">
+<p>Please fill out the appropriate fields and then click your desired function.<br><p>
+<input type="text" >Original Gravity (OG)<br>
+<input type="text" >Final Gravity (FG)<br>
+<input type="button" value="+" onClick="getSum()">
+<input type="button" value="-" onClick="getDifference()">
+<input type="button" value="x" onClick="getProduct()">
+<input type="button" value="%" onClick="getQuotient()">
+<input type="button" value="²√" onClick="getSqrt()">
+<input type="button" value="x²" onClick="getSqr()"><br>
+<p id = "answer" ></p>
+<input type="Reset">
+
+<p id = "Explanatory Paragraph" >
+<h3> Explanatory Notes </h3>
+
+Not all functions require the same input.  For example, estimating the final gravity of your batch is based on your OG and the average attenuation of your yeast strain, so the "FG" field need not be entered for this particular function.
+<br><br>
+The following table lists the required fields for each function:
+<br><br>
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 15px;
+}
+</style>
+<table style="width:100%">
+  <tr>
+    <th>Function</th>
+    <th>Required Fields</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>Calories</td>
+    <td>OG, FG</td>
+    <td>Gives the estimated calories in a 12oz beer based on the OG and FG</td>
+  </tr>
+  <tr>
+    <td>Expected Final Gravity</td>
+    <td>OG, Yeast Attenuation</td>
+    <td>Gives the estimated final gravity based on OG and the average attenuation expected from a given yeast straint.</td>
+  </tr>
+  <tr>
+    <td>Apparent Attenuation</td>
+    <td>OG, FG</td>
+    <td>Gives the apparent attenuation of your yeast (their efficiency) based on the OG and FG</td>
+  </tr>
+  <tr>
+    <td>Yeast Pitch Rate</td>
+    <td>OG, Batch Size</td>
+    <td>Gives the estimated amount of yeast to pitch based on the OG and batch size</td>
+  </tr>
+  <tr>
+    <td>IBUs</td>
+    <td>WG, Hop Charge</td>
+    <td>Gives the estimated IBUs based on the the hop charge and wort gravity</td>
+  </tr>
+</table> 
+</p>
+
+</form>
+</body>
+</html>
