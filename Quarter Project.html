@@ -1,4 +1,26 @@
 <html>
+<!--
+If you have a select element that looks like this:
+
+<select id="ddlViewBy">
+  <option value="1">test1</option>
+  <option value="2" selected="selected">test2</option>
+  <option value="3">test3</option>
+</select>
+
+Running this code:
+
+var e = document.getElementById("ddlViewBy");
+var strUser = e.options[e.selectedIndex].value;
+
+Would make strUser be 2. If what you actually want is test2, then do this:
+
+var e = document.getElementById("ddlViewBy");
+var strUser = e.options[e.selectedIndex].text;
+
+Which would make strUser be test2
+-->
+
 <head>
 <title>Brewing Calculator</title>
 
@@ -37,13 +59,22 @@ var AppAtt = Math.max(100*((first - second)/(first - 1))).toFixed(1);
 document.getElementById("answer").innerHTML = "The apparent attenuation of your yeast was <b>"+  AppAtt + "%</b>";
 }
 
+
+
+
+
 //Yeast Pitch Rate
 function PitchRate(){
-var first = Number(document.theForm.elements[0].value);
-var second = Number(document.theForm.elements[1].value);
-var sum = first / second;
-document.getElementById("answer").innerHTML = sum;
+var YeastSelection = document.getElementsById("");
+//var sum = first / second;
+document.getElementById("answer").innerHTML = YeastSelection;
 }
+
+
+
+
+
+
 
 //Working
 //Specific Gravity to Plato Converter
@@ -79,10 +110,10 @@ document.getElementById("answer").innerHTML = "The ABV of your beer is approxima
 <input type="text" >Final Gravity (FG)<br>
 <input type="text" >Specific Gravity (SG)<br>
 <select name="YeastPitch">
-  <option value="50mL">Liquid Yeast (50mL)</option>
-  <option value="125mL">Liquid Yeast (125mL)</option>
-  <option value="Tube">Pitchable Tube</option>
-  <option value="Slurry">2 litre Starter / Slurry</option>
+  <option id="50mL">Liquid Yeast (50mL)</option>
+  <option id="125mL">Liquid Yeast (125mL)</option>
+  <option id="Tube">Pitchable Tube</option>
+  <option id="Slurry">2 litre Starter / Slurry</option>
 </select>Yeast Type<br>
 <input type="text" >Yeast Attenuation<br>
 <input type="text" >Wort Gravity (WG)<br>
