@@ -1,14 +1,9 @@
 <html>
 <head>
 <title>Brewing Calculator</title>
-
-<!--JavaScript-->
 <script>
-////////////////////////
 //Calculator Functions//
-////////////////////////
 
-//Working
 //Calories
 function Calories(){
 var first = Number(document.theForm.elements[0].value);
@@ -19,16 +14,14 @@ var TotalCal = Math.ceil(AlcCal + CarbCal);
 document.getElementById("answer").innerHTML = "Based on your gravity readings, your beer has about <b>" + TotalCal + " calories</b> per 12 ounce bottle";
 }
 
-//Working
 //Expected FG
 function ExpectedFG(){
 var OG = Number(document.theForm.elements[0].value);
-var Att = Number(document.theForm.elements[4].value);
+var Att = Number(document.theForm.elements[5].value);
 var ExpFG = Math.max(1 + ((((OG - 1) * 1000) * (100 - Att)) / 100000)).toFixed(3);
 document.getElementById("answer").innerHTML = ExpFG;
 }
 
-//Working
 //Apparent Attenuation
 function ApparentAttenuation(){
 var first = Number(document.theForm.elements[0].value);
@@ -37,11 +30,10 @@ var AppAtt = Math.max(100*((first - second)/(first - 1))).toFixed(1);
 document.getElementById("answer").innerHTML = "The apparent attenuation of your yeast was <b>"+  AppAtt + "%</b>";
 }
 
-//Working
 //Yeast Pitch Rate
 function PitchRate(){
 var OG = Number(document.theForm.elements[0].value);
-var Batch = Number(document.theForm.elements[7].value);
+var Batch = Number(document.theForm.elements[6].value);
 var YeastSelection = document.getElementById("YeastPitch");
 var StyleSelection = document.getElementById("Style");
 var Yeast = Number(YeastSelection.options[YeastSelection.selectedIndex].value);
@@ -53,11 +45,10 @@ var PitchNeeded = Math.ceil((MillCells * Plato * mL) / 1000000000);
 document.getElementById("answer").innerHTML = "You will need to pitch <b>" + PitchNeeded + " billion cells</b> for this batch";
 }
 
-//Working
 //Starter Requirement
 function Starter(){
 var OG = Number(document.theForm.elements[0].value);
-var Batch = Number(document.theForm.elements[7].value);
+var Batch = Number(document.theForm.elements[6].value);
 var YeastSelection = document.getElementById("YeastPitch");
 var StyleSelection = document.getElementById("Style");
 var Yeast = Number(YeastSelection.options[YeastSelection.selectedIndex].value);
@@ -69,12 +60,11 @@ var PitchNeeded = Math.ceil((MillCells * Plato * mL) / 1000000000);
 if (PitchNeeded < Yeast){
 document.getElementById("answer").innerHTML = "You will need to pitch <b>" + PitchNeeded + " billion cells</b> for this batch, and you have <b>" + Yeast + " billion cells</b>.  You <b>should not</b> need a starter.";
 }
-else if (PitchNeeded > Yeast){
+if (PitchNeeded > Yeast){
 document.getElementById("answer").innerHTML = "You will need to pitch <b>" + PitchNeeded + " billion cells</b> for this batch, and you have <b>" + Yeast + " billion cells</b>.  You <b>WILL</b> need a starter.";
 }
 }
 
-//Working
 //Specific Gravity to Plato Converter
 function SpecToPlato(){
 var first = Number(document.theForm.elements[2].value);
@@ -82,7 +72,6 @@ var SGtoPlato = Math.max((135.997 * Math.pow(first, 3)) - (630.272 * Math.pow(fi
 document.getElementById("answer").innerHTML = "An original gravity of <b>" + Math.max(first).toFixed(3) + "</b> is equivalent to <b>"+  SGtoPlato + "°P</b>";
 }
 
-//Working
 //ABV
 function ABV(){
 var first = Number(document.theForm.elements[0].value);
@@ -90,13 +79,10 @@ var second = Number(document.theForm.elements[1].value);
 var ABV = Math.max(131.25 * (first - second)).toFixed(1);
 document.getElementById("answer").innerHTML = "The ABV of your beer is approximately <b>"+  ABV + "%</b>";
 }
-
 </script>
 </head>
-
-
-<!--HTML-->
 <body>
+
 <h2>John's Brewing Calculator</h2>
 
 <!--Calculator Form-->
@@ -108,6 +94,8 @@ document.getElementById("answer").innerHTML = "The ABV of your beer is approxima
 <input type="text" >Final Gravity (FG)<br>
 <input type="text" >Specific Gravity (SG)<br>
 <select id="YeastPitch">
+  <option value=100>Dry Yeast (5g)</option>
+  <option value=230>Dry Yeast (11.5g)</option>
   <option value=15>Liquid Yeast (50mL)</option>
   <option value=50>Liquid Yeast (125mL)</option>
   <option value=45>Pitchable Tube</option>
@@ -116,23 +104,20 @@ document.getElementById("answer").innerHTML = "The ABV of your beer is approxima
 <select id="Style">
   <option value=0.5>Ale - OG < 1.055 (<14°P)</option>
   <option value=1>Ale - OG > 1.055 (>14°P)</option>
-<!--Lager Options
-  <option value=1>Lager - OG < 1.055 (<14°P)</option>
-  <option value=1.5>Lager - OG > 1.055 (>14°P)</option>
--->
 </select>Style and Gravity<br>
 <input type="text" >Yeast Attenuation<br>
-<input type="text" >Wort Gravity (WG)<br>
 <input type="text" >Batch Size (US Gallons)<br>
+</form>
 
 <!--Function Buttons-->
+<input type="button" value="ABV" onClick="ABV()">
+<input type="button" value="Apparent Attenuation" onClick="ApparentAttenuation()">
 <input type="button" value="Calories" onClick="Calories()">
 <input type="button" value="Expected FG" onClick="ExpectedFG()">
-<input type="button" value="Apparent Attenuation" onClick="ApparentAttenuation()">
 <input type="button" value="Pitch Rate" onClick="PitchRate()">
-<input type="button" value="Starter" onClick="Starter()">
 <input type="button" value="SG to Plato" onClick="SpecToPlato()">
-<input type="button" value="ABV" onClick="ABV()"><br>
+<input type="button" value="Starter" onClick="Starter()">
+<br>
 
 <!--Results-->
 <h3>Results:</h3>
@@ -146,7 +131,7 @@ document.getElementById("answer").innerHTML = "The ABV of your beer is approxima
 <p id = "Explanatory Paragraph" >
 <h3> Explanatory Notes </h3>
 
-Not all functions require the same input.  For example, estimating the final gravity of your batch is based on your OG and the average attenuation of your yeast strain, so the "FG" field need not be entered for this particular function.
+Not all functions require the same input.  For example, estimating the final gravity of your batch is based on your OG and the average attenuation of your yeast strain, so these are the only fields that need to be entered for this particular function.
 <br><br>
 The following table lists the required fields for each function:
 <br><br>
@@ -163,45 +148,61 @@ th, td {
 </style>
 
 <!--Table Content-->
-<table style="width:100%">
+<table style="width:75%">
   <tr>
     <th>Function</th>
     <th>Required Fields</th>
     <th>Description</th>
   </tr>
+
   <tr>
-    <td>Calories</td>
+    <td>ABV</td>
     <td>OG, FG</td>
-    <td>Gives the estimated calories in a 12oz beer based on the OG and FG</td>
+    <td>Alcohol by Volume: Gives the percent ABV based on the OG and FG</td>
   </tr>
-  <tr>
-    <td>Expected Final Gravity</td>
-    <td>OG, Yeast Attenuation</td>
-    <td>Gives the estimated final gravity based on OG and the average attenuation expected from a given yeast straint.</td>
-  </tr>
+
   <tr>
     <td>Apparent Attenuation</td>
     <td>OG, FG</td>
-    <td>Gives the apparent attenuation of your yeast (their efficiency) based on the OG and FG</td>
+    <td>Gives the apparent attenuation of your yeast (their efficiency at converting fermentable sugars into alcohol) based on the OG and FG</td>
   </tr>
+
   <tr>
-    <td>Yeast Pitch Rate</td>
-    <td>OG, Batch Size</td>
-    <td>Gives the estimated amount of yeast to pitch based on the OG and batch size<br>
+    <td>Calories</td>
+    <td>OG, FG</td>
+    <td>Gives the estimated calories in a 12oz serving of beer based on the OG and FG</td>
+  </tr>
+  
+  <tr>
+    <td>Expected FG</td>
+    <td>OG, Yeast Attenuation</td>
+    <td>Expected Final Gravity: Gives the estimated final gravity based on OG and the average attenuation expected from a given yeast straint.</td>
+  </tr>
+    
+  <tr>
+    <td>Pitch Rate</td>
+    <td>OG, Style and Gravity, Batch Size</td>
+    <td>Gives the estimated amount of yeast you will need to pitch based on the OG and batch size<br><br>
+    Dry Yeast (5g) - Assumed to have 100 billion cells<br>
+    Dry Yeast (11.5g) - Assumed to have 230 billion cells<br>
     Liquid Yeast (50mL) - Assumed to have 15 billion cells<br>
     Liquid Yeast (125mL) - Assumed to have 50 billion cells<br>
     Pitchable Tube - Assumed to have 45 billion cells<br>
     2 litre Starter / Slurry - Assumed to have 200 billion cells
     </td>
   </tr>
+  
   <tr>
     <td>SG to Plato</td>
     <td>SG</td>
     <td>Gives the equivalent degrees Plato (°P) based on specific gravity</td>
   </tr>
 </table> 
-
-
-</form>
+<br><br>
+<!--Project Information-->
+IT 102 - Quarter Project of Choice<br>
+North Seattle College - Winter Quarter<br>
+Brewing Calculator<br>
+John Paul Robert
 </body>
 </html>
