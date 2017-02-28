@@ -1,26 +1,4 @@
 <html>
-<!--
-If you have a select element that looks like this:
-
-<select id="ddlViewBy">
-  <option value="1">test1</option>
-  <option value="2" selected="selected">test2</option>
-  <option value="3">test3</option>
-</select>
-
-Running this code:
-
-var e = document.getElementById("ddlViewBy");
-var strUser = e.options[e.selectedIndex].value;
-
-Would make strUser be 2. If what you actually want is test2, then do this:
-
-var e = document.getElementById("ddlViewBy");
-var strUser = e.options[e.selectedIndex].text;
-
-Which would make strUser be test2
--->
-
 <head>
 <title>Brewing Calculator</title>
 
@@ -59,10 +37,7 @@ var AppAtt = Math.max(100*((first - second)/(first - 1))).toFixed(1);
 document.getElementById("answer").innerHTML = "The apparent attenuation of your yeast was <b>"+  AppAtt + "%</b>";
 }
 
-
-
-
-
+//Working
 //Yeast Pitch Rate
 function PitchRate(){
 var OG = Number(document.theForm.elements[0].value);
@@ -72,12 +47,13 @@ var StyleSelection = document.getElementById("Style");
 var Yeast = Number(YeastSelection.options[YeastSelection.selectedIndex].value);
 var Style = Number(StyleSelection.options[StyleSelection.selectedIndex].value);
 
-//var sum = first / second;
-document.getElementById("answer").innerHTML = Style;
+var Plato = ((OG - 1) * 1000) / 4;
+var mL = Batch * 3785.41;
+var MillCells = Style * 1000000;
+var PitchNeeded = Math.ceil((MillCells * Plato * mL) / 1000000000);
+
+document.getElementById("answer").innerHTML = "You will need to pitch <b>" + PitchNeeded + " billion cells</b> for this batch";
 }
-
-
-
 
 //Working
 //Specific Gravity to Plato Converter
@@ -121,12 +97,14 @@ document.getElementById("answer").innerHTML = "The ABV of your beer is approxima
 <select id="Style">
   <option value=0.5>Ale - OG < 1.055 (<14°P)</option>
   <option value=1>Ale - OG > 1.055 (>14°P)</option>
+<!--Lager Options
   <option value=1>Lager - OG < 1.055 (<14°P)</option>
   <option value=1.5>Lager - OG > 1.055 (>14°P)</option>
+-->
 </select>Style and Gravity<br>
 <input type="text" >Yeast Attenuation<br>
 <input type="text" >Wort Gravity (WG)<br>
-<input type="text" >Batch Size (in US Gallons)<br>
+<input type="text" >Batch Size (US Gallons)<br>
 
 <!--Function Buttons-->
 <input type="button" value="Calories" onClick="Calories()">
