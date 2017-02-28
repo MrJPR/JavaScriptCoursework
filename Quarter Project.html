@@ -78,11 +78,11 @@ document.getElementById("answer").innerHTML = "The ABV of your beer is approxima
 <input type="text" >Original Gravity (OG)<br>
 <input type="text" >Final Gravity (FG)<br>
 <input type="text" >Specific Gravity (SG)<br>
-<select name="cars">
-  <option value="Dry">Dry Yeast</option>
-  <option value="LiquidPack">Liquid Yeast (0.0mL)</option>
-  <option value="LiquidVial">Liquid Yeast (0.0mL)</option>
-  <option value="Slurry">Slurry</option>
+<select name="YeastPitch">
+  <option value="50mL">Liquid Yeast (50mL)</option>
+  <option value="125mL">Liquid Yeast (125mL)</option>
+  <option value="Tube">Pitchable Tube</option>
+  <option value="Slurry">2 litre Starter / Slurry</option>
 </select>Yeast Type<br>
 <input type="text" >Yeast Attenuation<br>
 <input type="text" >Wort Gravity (WG)<br>
@@ -149,7 +149,12 @@ th, td {
   <tr>
     <td>Yeast Pitch Rate</td>
     <td>OG, Batch Size</td>
-    <td>Gives the estimated amount of yeast to pitch based on the OG and batch size</td>
+    <td>Gives the estimated amount of yeast to pitch based on the OG and batch size<br>
+    Liquid Yeast (50mL) - Assumed to have 15 billion cells<br>
+    Liquid Yeast (125mL) - Assumed to have 50 billion cells<br>
+    Pitchable Tube - Assumed to have 45 billion cells<br>
+    2 litre Starter / Slurry - Assumed to have 200 billion cells
+    </td>
   </tr>
   <tr>
     <td>SG to Plato</td>
