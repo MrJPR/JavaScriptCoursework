@@ -65,13 +65,16 @@ document.getElementById("answer").innerHTML = "The apparent attenuation of your 
 
 //Yeast Pitch Rate
 function PitchRate(){
-var YeastSelection = document.getElementsById("");
+var OG = Number(document.theForm.elements[0].value);
+var Batch = Number(document.theForm.elements[7].value);
+var YeastSelection = document.getElementById("YeastPitch");
+var StyleSelection = document.getElementById("Style");
+var Yeast = Number(YeastSelection.options[YeastSelection.selectedIndex].value);
+var Style = Number(StyleSelection.options[StyleSelection.selectedIndex].value);
+
 //var sum = first / second;
-document.getElementById("answer").innerHTML = YeastSelection;
+document.getElementById("answer").innerHTML = Style;
 }
-
-
-
 
 
 
@@ -109,15 +112,21 @@ document.getElementById("answer").innerHTML = "The ABV of your beer is approxima
 <input type="text" >Original Gravity (OG)<br>
 <input type="text" >Final Gravity (FG)<br>
 <input type="text" >Specific Gravity (SG)<br>
-<select name="YeastPitch">
-  <option id="50mL">Liquid Yeast (50mL)</option>
-  <option id="125mL">Liquid Yeast (125mL)</option>
-  <option id="Tube">Pitchable Tube</option>
-  <option id="Slurry">2 litre Starter / Slurry</option>
+<select id="YeastPitch">
+  <option value=15>Liquid Yeast (50mL)</option>
+  <option value=50>Liquid Yeast (125mL)</option>
+  <option value=45>Pitchable Tube</option>
+  <option value=200>2 litre Starter / Slurry</option>
 </select>Yeast Type<br>
+<select id="Style">
+  <option value=0.5>Ale - OG < 1.055 (<14°P)</option>
+  <option value=1>Ale - OG > 1.055 (>14°P)</option>
+  <option value=1>Lager - OG < 1.055 (<14°P)</option>
+  <option value=1.5>Lager - OG > 1.055 (>14°P)</option>
+</select>Style and Gravity<br>
 <input type="text" >Yeast Attenuation<br>
 <input type="text" >Wort Gravity (WG)<br>
-<input type="text" >Batch Size<br>
+<input type="text" >Batch Size (in US Gallons)<br>
 
 <!--Function Buttons-->
 <input type="button" value="Calories" onClick="Calories()">
