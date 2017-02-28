@@ -46,13 +46,32 @@ var YeastSelection = document.getElementById("YeastPitch");
 var StyleSelection = document.getElementById("Style");
 var Yeast = Number(YeastSelection.options[YeastSelection.selectedIndex].value);
 var Style = Number(StyleSelection.options[StyleSelection.selectedIndex].value);
-
 var Plato = ((OG - 1) * 1000) / 4;
 var mL = Batch * 3785.41;
 var MillCells = Style * 1000000;
 var PitchNeeded = Math.ceil((MillCells * Plato * mL) / 1000000000);
-
 document.getElementById("answer").innerHTML = "You will need to pitch <b>" + PitchNeeded + " billion cells</b> for this batch";
+}
+
+//Working
+//Starter Requirement
+function Starter(){
+var OG = Number(document.theForm.elements[0].value);
+var Batch = Number(document.theForm.elements[7].value);
+var YeastSelection = document.getElementById("YeastPitch");
+var StyleSelection = document.getElementById("Style");
+var Yeast = Number(YeastSelection.options[YeastSelection.selectedIndex].value);
+var Style = Number(StyleSelection.options[StyleSelection.selectedIndex].value);
+var Plato = ((OG - 1) * 1000) / 4;
+var mL = Batch * 3785.41;
+var MillCells = Style * 1000000;
+var PitchNeeded = Math.ceil((MillCells * Plato * mL) / 1000000000);
+if (PitchNeeded < Yeast){
+document.getElementById("answer").innerHTML = "You will need to pitch <b>" + PitchNeeded + " billion cells</b> for this batch, and you have <b>" + Yeast + " billion cells</b>.  You <b>should not</b> need a starter.";
+}
+else if (PitchNeeded > Yeast){
+document.getElementById("answer").innerHTML = "You will need to pitch <b>" + PitchNeeded + " billion cells</b> for this batch, and you have <b>" + Yeast + " billion cells</b>.  You <b>WILL</b> need a starter.";
+}
 }
 
 //Working
@@ -111,6 +130,7 @@ document.getElementById("answer").innerHTML = "The ABV of your beer is approxima
 <input type="button" value="Expected FG" onClick="ExpectedFG()">
 <input type="button" value="Apparent Attenuation" onClick="ApparentAttenuation()">
 <input type="button" value="Pitch Rate" onClick="PitchRate()">
+<input type="button" value="Starter" onClick="Starter()">
 <input type="button" value="SG to Plato" onClick="SpecToPlato()">
 <input type="button" value="ABV" onClick="ABV()"><br>
 
