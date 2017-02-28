@@ -1,8 +1,15 @@
 <html>
 <head>
 <title>Brewing Calculator</title>
+
+<!--Page Style-->
+<style>
+p1 {padding: 5px;}
+p1.double {border-style: double;}
+</style>
+
 <script>
-//Calculator Functions//
+//Calculator Functions
 
 //Calories
 function Calories(){
@@ -19,7 +26,7 @@ function ExpectedFG(){
 var OG = Number(document.theForm.elements[0].value);
 var Att = Number(document.theForm.elements[5].value);
 var ExpFG = Math.max(1 + ((((OG - 1) * 1000) * (100 - Att)) / 100000)).toFixed(3);
-document.getElementById("answer").innerHTML = ExpFG;
+document.getElementById("answer").innerHTML = "Based on an original gravity of " + Math.max(OG).toFixed(3) + " and an attenuation of " + Att + "%, your expected final gravity should be <b>" + ExpFG + "</b>.";
 }
 
 //Apparent Attenuation
@@ -83,7 +90,7 @@ document.getElementById("answer").innerHTML = "The ABV of your beer is approxima
 </head>
 <body>
 
-<h2>John's Brewing Calculator</h2>
+<h1>John's Brewing Calculator</h1>
 
 <!--Calculator Form-->
 <form name="theForm">
@@ -121,7 +128,8 @@ document.getElementById("answer").innerHTML = "The ABV of your beer is approxima
 
 <!--Results-->
 <h3>Results:</h3>
-<p id = "answer" >---</p>
+<p1 id = "answer" class="double">---Your results will appear here after you execute a function---</p1>
+<br>
 <br>
 <input type="Reset">
 <br>
@@ -140,11 +148,8 @@ The following table lists the required fields for each function:
 <style>
 table, th, td {
     border: 1px solid black;
-    border-collapse: collapse;
-}
-th, td {
-    padding: 5px;
-}
+    border-collapse: collapse;}
+th, td {padding: 5px;}
 </style>
 
 <!--Table Content-->
@@ -195,14 +200,22 @@ th, td {
   <tr>
     <td>SG to Plato</td>
     <td>SG</td>
-    <td>Gives the equivalent degrees Plato (°P) based on specific gravity</td>
+    <td>Specific Gravity to Plato: Gives the equivalent degrees Plato (°P) based on specific gravity</td>
   </tr>
+  
+  <tr>
+    <td>Starter</td>
+    <td>OG, Yeast Type, Style and Gravity, Batch Size</td>
+    <td>Determines whether a yeast starter will need to be used based on the amount of yeast you plan to pitch, the style and gravity of your wort, and the batch size</td>
+  </tr>  
 </table> 
 <br><br>
-<!--Project Information-->
+
+<p2>Project Information</p2><br><br>
 IT 102 - Quarter Project of Choice<br>
 North Seattle College - Winter Quarter<br>
 Brewing Calculator<br>
 John Paul Robert
+
 </body>
 </html>
