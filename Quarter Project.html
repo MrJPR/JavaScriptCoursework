@@ -19,15 +19,16 @@ var TotalCal = Math.ceil(AlcCal + CarbCal);
 document.getElementById("answer").innerHTML = "Based on your gravity readings, your beer has about <b>" + TotalCal + " calories</b> per 12 ounce bottle";
 }
 
+//Working
 //Expected FG
 function ExpectedFG(){
-var first = Number(document.theForm.elements[0].value);
-var second = Number(document.theForm.elements[1].value);
-var ExpFG = first / second;
+var OG = Number(document.theForm.elements[0].value);
+var Att = Number(document.theForm.elements[4].value);
+var ExpFG = Math.max(1 + ((((OG - 1) * 1000) * (100 - Att)) / 100000)).toFixed(3);
 document.getElementById("answer").innerHTML = ExpFG;
 }
 
-//Working!
+//Working
 //Apparent Attenuation
 function ApparentAttenuation(){
 var first = Number(document.theForm.elements[0].value);
