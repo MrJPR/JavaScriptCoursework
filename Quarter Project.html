@@ -13,10 +13,10 @@ p1.double {border-style: double;}
 
 //Calories
 function Calories(){
-var first = Number(document.theForm.elements[0].value);
-var second = Number(document.theForm.elements[1].value);
-var AlcCal = 1881.22 * second * ((first - second) / (1.775 - first));
-var CarbCal = (3550 * second * ((.1808 * first) + (.8192 * second) - 1.0004));
+var OG = Number(document.theForm.elements[0].value);
+var FG = Number(document.theForm.elements[1].value);
+var AlcCal = 1881.22 * FG * ((OG - FG) / (1.775 - OG));
+var CarbCal = (3550 * FG * ((.1808 * OG) + (.8192 * FG) - 1.0004));
 var TotalCal = Math.ceil(AlcCal + CarbCal);
 document.getElementById("answer").innerHTML = "Based on your gravity readings, your beer has about <b>" + TotalCal + " calories</b> per 12 ounce bottle";
 }
@@ -31,9 +31,9 @@ document.getElementById("answer").innerHTML = "Based on an original gravity of "
 
 //Apparent Attenuation
 function ApparentAttenuation(){
-var first = Number(document.theForm.elements[0].value);
-var second = Number(document.theForm.elements[1].value);
-var AppAtt = Math.max(100*((first - second)/(first - 1))).toFixed(1);
+var OG = Number(document.theForm.elements[0].value);
+var FG = Number(document.theForm.elements[1].value);
+var AppAtt = Math.max(100*((OG - FG)/(OG - 1))).toFixed(1);
 document.getElementById("answer").innerHTML = "The apparent attenuation of your yeast was <b>"+  AppAtt + "%</b>";
 }
 
@@ -74,17 +74,29 @@ document.getElementById("answer").innerHTML = "You will need to pitch <b>" + Pit
 
 //Specific Gravity to Plato Converter
 function SpecToPlato(){
-var first = Number(document.theForm.elements[2].value);
-var SGtoPlato = Math.max((135.997 * Math.pow(first, 3)) - (630.272 * Math.pow(first, 2)) + (1111.14 * first) - 616.868).toFixed(1);
-document.getElementById("answer").innerHTML = "An original gravity of <b>" + Math.max(first).toFixed(3) + "</b> is equivalent to <b>"+  SGtoPlato + "°P</b>";
+var SG = Number(document.theForm.elements[2].value);
+var SGtoPlato = Math.max((135.997 * Math.pow(SG, 3)) - (630.272 * Math.pow(SG, 2)) + (1111.14 * SG) - 616.868).toFixed(1);
+document.getElementById("answer").innerHTML = "An original gravity of <b>" + Math.max(SG).toFixed(3) + "</b> is equivalent to <b>"+  SGtoPlato + "°P</b>";
 }
 
 //ABV
 function ABV(){
-var first = Number(document.theForm.elements[0].value);
-var second = Number(document.theForm.elements[1].value);
-var ABV = Math.max(131.25 * (first - second)).toFixed(1);
+var OG = Number(document.theForm.elements[0].value);
+var FG = Number(document.theForm.elements[1].value);
+var ABV = Math.max(131.25 * (OG - FG)).toFixed(1);
 document.getElementById("answer").innerHTML = "The ABV of your beer is approximately <b>"+  ABV + "%</b>";
+}
+
+//Wheat Extract Dilution
+function WheatDilution(){
+var TargetWeight = Number(document.theForm.elements[9].value);
+var Blend = document.getElementById("Blend");
+var TargetP = document.getElementById("TargetPct");
+var BlendRatio = Number(Blend.options[Blend.selectedIndex].value);
+var TargetPct = Number(TargetP.options[TargetP.selectedIndex].value);
+var BlendWeight = Math.max(((TargetPct * TargetWeight) - TargetWeight) / (BlendRatio - 1)).toFixed(2);
+var PureWeight = Math.max(TargetWeight - BlendWeight).toFixed(2);
+document.getElementById("answer").innerHTML = "To get " + TargetWeight + " pound(s) of a " + (100-(TargetPct * 100)) + "/" + (TargetPct * 100) + "  wheat/barley blend, you will need <b>" +  BlendWeight + " pounds of your " + (100 - (BlendRatio * 100)) + "/" + (BlendRatio * 100) + "  wheat/barley blend</b> and <b>" + PureWeight + " pounds of 100% barley extract.</b>";
 }
 </script>
 </head>
@@ -114,6 +126,28 @@ document.getElementById("answer").innerHTML = "The ABV of your beer is approxima
 </select>Style and Gravity<br>
 <input type="text" >Yeast Attenuation<br>
 <input type="text" >Batch Size (US Gallons)<br>
+<select id="Blend">
+  <option value=.50 selected>Wheat 50 - Barley 50</option>
+  <option value=.45>Wheat 55 - Barley 45</option>
+  <option value=.40>Wheat 60 - Barley 40</option>
+  <option value=.35>Wheat 65 - Barley 35</option>
+  <option value=.30>Wheat 70 - Barley 30</option>
+  <option value=.25>Wheat 75 - Barley 25</option>
+</select>Ratio of Wheat Extract Used<br>
+<select id="TargetPct">
+  <option value=.75>Wheat 25 - Barley 75</option>
+  <option value=.70>Wheat 30 - Barley 70</option>
+  <option value=.65>Wheat 35 - Barley 65</option>
+  <option value=.60>Wheat 40 - Barley 60</option>
+  <option value=.55>Wheat 45 - Barley 55</option>
+  <option value=.50 selected>Wheat 50 - Barley 50</option>
+  <option value=.45>Wheat 55 - Barley 45</option>
+  <option value=.40>Wheat 60 - Barley 40</option>
+  <option value=.35>Wheat 65 - Barley 35</option>
+  <option value=.30>Wheat 70 - Barley 30</option>
+  <option value=.25>Wheat 75 - Barley 25</option>
+</select>Desired Ratio<br>
+<input type="text" >Target Weight<br>
 </form>
 
 <!--Function Buttons-->
@@ -124,6 +158,7 @@ document.getElementById("answer").innerHTML = "The ABV of your beer is approxima
 <input type="button" value="Pitch Rate" onClick="PitchRate()">
 <input type="button" value="SG to Plato" onClick="SpecToPlato()">
 <input type="button" value="Starter" onClick="Starter()">
+<input type="button" value="Wheat LME Conversion" onClick="WheatDilution()">
 <br>
 
 <!--Results-->
@@ -207,6 +242,12 @@ th, td {padding: 5px;}
     <td>Starter</td>
     <td>OG, Yeast Type, Style and Gravity, Batch Size</td>
     <td>Determines whether a yeast starter will need to be used based on the amount of yeast you plan to pitch, the style and gravity of your wort, and the batch size</td>
+  </tr>
+  
+  <tr>
+    <td>Wheat LME Conversion</td>
+    <td>Ratio of Wheat Extract Used, Desired Ratio, Target Weight</td>
+    <td>Wheat Liquid Malt Extract Conversion - Calculates the amount of 100% 2-row extract needed to add to a given wheat/barley blend to achieve a desired ratio.</td>
   </tr>  
 </table> 
 <br><br>
