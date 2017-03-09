@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+
+var slipperyTotal = 0;
+
+function draw(){
+return (Math.ceil(Math.random()*6) + Math.ceil(Math.random()*6));
+}
+
+// Player 1's Function with Closure
+var Player1Turn = (function () {
+var Player1Total = 0;
+return function () {return Player1Total += draw();}
+})();
+
+// Player 2's Function with Closure
+var Player2Turn = (function () {
+var Player2Total = 0;
+return function () {return Player2Total += draw();}
+})();
+
+// Player 3's Function with Closure
+var Player3Turn = (function () {
+var Player3Total = 0;
+return function () {return Player3Total += draw();}
+})();
+
+// Player 4's Function with Closure
+var Player4Turn = (function () {
+var Player4Total = 0;
+return function () {return Player4Total += draw();}
+})();
+
+function showTurn(){
+document.getElementById("Player1").innerHTML = "Player 1: " + Player1Turn();
+document.getElementById("Player2").innerHTML = "Player 2: " + Player2Turn();
+document.getElementById("Player3").innerHTML = "Player 3: " + Player3Turn();
+document.getElementById("Player4").innerHTML = "Player 4: " + Player4Turn();
+}
+
+function Wild(){
+//var wild = Math.ceil(Math.random()*4);
+//if (wild == 1){
+//Player1Total += 10;
+//Player2Total += 10;
+//Player3Total += 10;
+//Player4Total += 10;
+
+alert(Player1Turn);
+
+}
+
+</script>
+</head>
+<body>
+
+<!--
+When the wild card button is pressed, one of the following outcomes will happen at random:
+
+    1 or both players advance 10 (go up a ladder)
+    1 or both players fall back 10 (down a chute)
+    no movement - just a silly message
+-->
+
+
+<h2> Lucky Louie and Slippery Sal </h2>
+
+<button type="button" onclick="showTurn()">Deal!</button>
+<button type="button" onclick="Wild()">Let's Get Wild!</button>
+
+<p id="Player1">Player 1</p>
+<p id="Player2">Player 2</p>
+<p id="Player3">Player 3</p>
+<p id="Player4">Player 4</p>
+<p id="slippery">Slippery</p>
+
+
+
+</body>
+</html>
