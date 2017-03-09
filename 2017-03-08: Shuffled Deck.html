@@ -8,25 +8,23 @@ Sort your deck at random<br>
 -->
 <script>
 //Enormous Deck
-var Deck = ["Ace Spades", "2 Spades", "3 Spades", "4 Spades", "5 Spades", "6 Spades", "7 Spades", "8 Spades", "9 Spades", "10 Spades", "Jack Spades", "Queen Spades", "King Spades", "Ace Hearts", "2 Hearts", "3 Hearts", "4 Hearts", "5 Hearts", "6 Hearts", "7 Hearts", "8 Hearts", "9 Hearts", "10 Hearts", "Jack Hearts", "Queen Hearts", "King Hearts", "Ace Clubs", "2 Clubs", "3 Clubs", "4 Clubs", "5 Clubs", "6 Clubs", "7 Clubs", "8 Clubs", "9 Clubs", "10 Clubs", "Jack Clubs", "Queen Clubs", "King Clubs", "Ace Diamonds", "2 Diamonds", "3 Diamonds", "4 Diamonds", "5 Diamonds", "6 Diamonds", "7 Diamonds", "8 Diamonds", "9 Diamonds", "10 Diamonds", "Jack Diamonds", "Queen Diamonds", "King Diamonds"];
+var Deck = ["Ace Spades", "2 Spades", "3 Spades", "4 Spades", "5 Spades", "6 Spades", 
 
-//Empty array for the hand
-var hand = ["empty", "empty", "empty", "empty", "empty", "empty"];
+"7 Spades", "8 Spades", "9 Spades", "10 Spades", "Jack Spades", "Queen Spades", "King 
 
-//counts cards for the hand
-var i = 0;
+Spades", "Ace Hearts", "2 Hearts", "3 Hearts", "4 Hearts", "5 Hearts", "6 Hearts", "7 
 
+Hearts", "8 Hearts", "9 Hearts", "10 Hearts", "Jack Hearts", "Queen Hearts", "King 
 
-function KeepPlaying(){
-while (hand[4] == "empty"){
-var picked = Math.floor(Math.random()*52);
-if (Deck[picked] != "dealt") {
-   hand[i] = Deck[picked];
-   Deck[picked] = "dealt";
-   i++;
-}}
-document.getElementById("Hand").innerHTML = ("You drew " + hand[0] + ", " + hand[1] +  ", " + hand[2] + ", " + hand[3] + ", and " + hand[4]);
-}
+Hearts", "Ace Clubs", "2 Clubs", "3 Clubs", "4 Clubs", "5 Clubs", "6 Clubs", "7 
+
+Clubs", "8 Clubs", "9 Clubs", "10 Clubs", "Jack Clubs", "Queen Clubs", "King Clubs", 
+
+"Ace Diamonds", "2 Diamonds", "3 Diamonds", "4 Diamonds", "5 Diamonds", "6 Diamonds", 
+
+"7 Diamonds", "8 Diamonds", "9 Diamonds", "10 Diamonds", "Jack Diamonds", "Queen 
+
+Diamonds", "King Diamonds"];
 
 function IndexOrder(){
 Deck.sort();
@@ -45,9 +43,9 @@ for (i = 0; i< 5; i++){
 }}
 </script>
 <p id="Hand">What will you get?</p>
-<button onclick="KeepPlaying()">Draw 5!</button>
 <button onclick="IndexOrder()">Order</button>
 <button onclick="ReverseOrder()">Reverse</button>
 <button onclick="RandomOrder()">Randomize!</button>
+
 </body>
 </html>
