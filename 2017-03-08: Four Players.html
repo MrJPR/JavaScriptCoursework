@@ -1,61 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script>
-
-var slipperyTotal = 0;
-
-function draw(){
-return (Math.ceil(Math.random()*6) + Math.ceil(Math.random()*6));
-}
-
-// Player 1's Function with Closure
-var Player1Turn = (function () {
-var Player1Total = 0;
-return function () {return Player1Total += draw();}
-})();
-
-// Player 2's Function with Closure
-var Player2Turn = (function () {
-var Player2Total = 0;
-return function () {return Player2Total += draw();}
-})();
-
-// Player 3's Function with Closure
-var Player3Turn = (function () {
-var Player3Total = 0;
-return function () {return Player3Total += draw();}
-})();
-
-// Player 4's Function with Closure
-var Player4Turn = (function () {
-var Player4Total = 0;
-return function () {return Player4Total += draw();}
-})();
-
-function showTurn(){
-document.getElementById("Player1").innerHTML = "Player 1: " + Player1Turn();
-document.getElementById("Player2").innerHTML = "Player 2: " + Player2Turn();
-document.getElementById("Player3").innerHTML = "Player 3: " + Player3Turn();
-document.getElementById("Player4").innerHTML = "Player 4: " + Player4Turn();
-}
-
-function Wild(){
-//var wild = Math.ceil(Math.random()*4);
-//if (wild == 1){
-//Player1Total += 10;
-//Player2Total += 10;
-//Player3Total += 10;
-//Player4Total += 10;
-
-alert(Player1Turn);
-
-}
-
-</script>
-</head>
-<body>
-
 <!--
 When the wild card button is pressed, one of the following outcomes will happen at random:
 
@@ -64,19 +9,117 @@ When the wild card button is pressed, one of the following outcomes will happen 
     no movement - just a silly message
 -->
 
+<script>
 
+function draw(){
+return (Math.ceil(Math.random()*6) + Math.ceil(Math.random()*6));
+}
+
+var Wild = (Math.ceil(Math.random()*5));
+
+var Player1Total = 0;
+var Player2Total = 0;
+
+
+//Regular Gameplay
+
+// Player 1's Function with Closure
+var Player1Turn = (function () {
+return function () {return Player1Total += draw();}
+})();
+
+// Player 2's Function with Closure
+var Player2Turn = (function () {
+return function () {return Player2Total += draw();}
+})();
+
+function showTurn(){
+document.getElementById("Player1").innerHTML = "Player 1: " + Player1Turn();
+document.getElementById("Player2").innerHTML = "Player 2: " + Player2Turn();
+}
+
+
+//Now it's wild's turn!
+
+if (Wild == 1){
+// Player 1's Function with Closure
+var Player1Wild = (function () {
+return function () {return Player1Total -= 10;}
+})();
+
+// Player 2's Function with Closure
+var Player2Wild = (function () {
+return function () {return Player2Total -= 10;}
+})();
+}
+
+if (Wild == 2){
+// Player 1's Function with Closure
+var Player1Wild = (function () {
+return function () {return Player1Total += 10;}
+})();
+
+// Player 2's Function with Closure
+var Player2Wild = (function () {
+return function () {return Player2Total -= 10;}
+})();
+}
+
+if (Wild == 3){
+// Player 1's Function with Closure
+var Player1Wild = (function () {
+return function () {return Player1Total -= 10;}
+})();
+
+// Player 2's Function with Closure
+var Player2Wild = (function () {
+return function () {return Player2Total += 10;}
+})();
+}
+
+if (Wild == 4){
+// Player 1's Function with Closure
+var Player1Wild = (function () {
+return function () {return Player1Total += 10;}
+})();
+
+// Player 2's Function with Closure
+var Player2Wild = (function () {
+return function () {return Player2Total += 10;}
+})();
+}
+
+if (Wild == 5){
+// Player 1's Function with Closure
+var Player1Wild = (function () {
+return function () {return "What are you doing?!";}
+})();
+
+// Player 2's Function with Closure
+var Player2Wild = (function () {
+return function () {return "Don't press the wild button!!";}
+})();
+}
+
+function showWild(){
+document.getElementById("Player1").innerHTML = "Player 1: " + Player1Wild();
+document.getElementById("Player2").innerHTML = "Player 2: " + Player2Wild();
+//document.getElementById("Player3").innerHTML = "Player 3: " + Player3Turn();
+//document.getElementById("Player4").innerHTML = "Player 4: " + Player4Turn();
+}
+</script>
+</head>
+<body>
 <h2> Lucky Louie and Slippery Sal </h2>
 
 <button type="button" onclick="showTurn()">Deal!</button>
-<button type="button" onclick="Wild()">Let's Get Wild!</button>
+<button type="button" onclick="showWild()">Let's Get Wild!</button>
 
 <p id="Player1">Player 1</p>
 <p id="Player2">Player 2</p>
+<!--
 <p id="Player3">Player 3</p>
 <p id="Player4">Player 4</p>
-<p id="slippery">Slippery</p>
-
-
-
+-->
 </body>
 </html>
