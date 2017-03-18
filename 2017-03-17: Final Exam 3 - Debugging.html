@@ -1,0 +1,48 @@
+<html>
+
+<body>
+<script>
+//////////////
+//POKER DICE//
+//////////////
+
+//Creates Die Object
+function Die(sides) {
+this.sides = sides;
+this.values = [];
+for (i= 0; i<this.sides; i++)
+{this.values[i]=i;}
+this.roll = function () {
+var showing = Math.floor(Math.random()*this.sides);  //corrected, Math.ceil will not include "Ace" {Functionality Error}
+return this.values[showing];};
+var pokerSide = ["A", "K", "Q", "J", "10","9"];
+this.poker = function () {
+for (i= 0; i<this.sides; i++)
+{this.values[i] = pokerSide[i];}
+};
+}  //corrected, previously no close brace {Syntax Error}
+
+
+//Creates an array to contain the newly created dice
+//var myDie = []; 
+var myDice = [];  //corrected, mispelling {Syntax Error}
+
+//Creates five new dice with poker faces
+for (c=0; c<5; c++){
+//myDice[c] = new Die(5);
+myDice[c] = new Die(6);  //corrected, incorrect number of sides {Logic Error}
+myDice[c].poker();
+}
+
+//Creates an "output" variable that holds the dice for display
+var output = "";
+for (k = 0; k< 5; k++){
+output+=myDice[k].roll();
+output+=" ";
+}
+
+//Alerts the randomised dice
+alert(output);
+</script>
+</body>
+</html>
