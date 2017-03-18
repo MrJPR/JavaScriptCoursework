@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<body>
+<!--
+The code below defines an object prototype called "car". Car needs to have the following features:
+Properties:
+
+X    gas (number type)
+X    mpg (number type)
+X    range (number type)
+X    empty (boolean type)
+
+Methods:
+
+X    drive(miles) (no return value)
+X    fill(gallons) (no return value)
+
+Your job is to supply the missing properties and methods. Here are some notes to help you out:
+
+X    range = gas * mpg
+X    fill(gallons) should update both gas and empty
+
+Test code is included below. After you have finished the object prototype, run the script including the test code and verify that the test code runs as expected. Then submit your finished prototype and test code to the dropbox. 
+-->
+<p id="demo"></p>
+
+<script>
+//Car Object
+function car(gas, mpg, range, empty) {
+
+//Properties
+this.gas = gas;
+this.mpg = mpg;
+this.range = this.gas * this.mpg;
+if (this.gas <= 0){this.empty = true;}
+else {this.empty = false;}
+
+//Methods
+this.drive = function (miles) {
+this.gas -= miles/this.mpg;
+if(this.gas <=0) {this.empty = true;}
+};
+
+this.fill = function (gallons){
+this.gallons = gallons;
+this.gas += gallons;
+if (this.gallons >=0){this.empty = false;}
+};
+
+}
+
+ 
+
+//test code
+
+var test = new car(15, 30);
+alert ("With 'test = new car(15, 30)', empty is: " + test.empty); //expected output = false
+
+test.drive(500);
+alert ("With 'test.drive(500)', empty is: " + test.empty); //expected output = true
+
+test.fill(20);
+alert ("With 'test.fill(20)', empty is: " + test.empty); //expected output = false
+
+
+</script>
+
+</body>
+</html>
